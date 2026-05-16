@@ -17,6 +17,7 @@ PROJECT_KNOWLEDGE_BASE.md
 backups/
 tmp-*.png
 tmp_*.sql
+supabase/.temp/
 
 # Editor directories and files
 .vscode/*
