@@ -2,6 +2,17 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getHighestRole, getUserRoles } from "../_shared/roles.ts";
 import { getContentHeaders, getOptionsHeaders, isOriginAllowed } from "../_shared/cors.ts";
 
+const toError = (error: unknown, fallback = "Erro inesperado") => {
+  if (error instanceof Error) return error;
+  if (typeof error === "string") return new Error(error);
+
+  try {
+    return new Error(JSON.stringify(error));
+  } catch {
+    return new Error(fallback);
+  }
+};
+
 const isMissingTableError = (message: string | undefined) =>
   Boolean(message && message.includes("Could not find the table 'public."));
 
@@ -12,7 +23,10 @@ const deleteByCtId = async (
 ) => {
   const { error } = await supabaseAdmin.from(table).delete().eq("ct_id", ctId);
   if (error) {
-    if (isMissingTableError(error.message)) {
+    if (
+      isMissingTableError(error.message) ||
+      error.message?.includes("column") && error.message.includes("ct_id")
+    ) {
       console.warn(`[delete-ct-users] tabela opcional ausente, ignorando: ${table}`);
       return;
     }
@@ -114,7 +128,6 @@ Deno.serve(async (req) => {
 
     const nonCtTables = [
       "alertas_graduacao",
-      "aluno_documentos",
       "aluno_planos",
       "avaliacoes",
       "aula_chamadas",
@@ -144,6 +157,7 @@ Deno.serve(async (req) => {
     await deleteByCtId(supabaseAdmin, "billing_subscriptions", ctId);
 
     await deleteByUserIds(supabaseAdmin, "billing_subscriptions", "user_id", ctUserIds);
+    await deleteByUserIds(supabaseAdmin, "aluno_documentos", "aluno_id", ctUserIds);
     await deleteByUserIds(supabaseAdmin, "pagamentos", "aluno_id", ctUserIds);
     await deleteByUserIds(supabaseAdmin, "mensagens_enviadas", "aluno_id", ctUserIds);
     await deleteByUserIds(supabaseAdmin, "mensagens_enviadas", "enviado_por", ctUserIds);
@@ -199,7 +213,8 @@ Deno.serve(async (req) => {
       headers: getContentHeaders(req.headers),
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Erro inesperado" }), {
+    const normalizedError = toError(error);
+    return new Response(JSON.stringify({ error: normalizedError.message }), {
       status: 400,
       headers: getContentHeaders(req.headers),
     });
