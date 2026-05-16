@@ -16,6 +16,7 @@ dist-ssr
 PROJECT_KNOWLEDGE_BASE.md
 backups/
 tmp-*.png
+tmp_*.png
 tmp_*.sql
 supabase/.temp/
 .wrangler/

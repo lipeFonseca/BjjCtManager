@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="128" y1="0" x2="128" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#15171d"/>
+      <stop offset="1" stop-color="#090A0D"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 204) rotate(90) scale(30 92)">
+      <stop stop-color="#FF2E2E" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FF2E2E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="redShine" x1="130" y1="26" x2="200" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF4949"/>
+      <stop offset="1" stop-color="#FF4949" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="55" y1="59" x2="132" y2="199" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".55" stop-color="#D8DBE1"/>
+      <stop offset="1" stop-color="#818690"/>
+    </linearGradient>
+    <linearGradient id="red" x1="133" y1="52" x2="198" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5B5B"/>
+      <stop offset=".5" stop-color="#F12424"/>
+      <stop offset="1" stop-color="#8B0D0D"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="42" fill="url(#bg)"/>
+  <rect x="4" y="4" width="248" height="248" rx="42" stroke="rgba(255,255,255,0.35)"/>
+  <ellipse cx="128" cy="204" rx="92" ry="30" fill="url(#glow)"/>
+  <path d="M126 25L199 98L185 112L112 39L126 25Z" fill="url(#redShine)" opacity=".75"/>
+
+  <path d="M64 72L122 45V202L64 175V72Z" stroke="url(#silver)" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M136 45L192 72V175L136 202V45Z" stroke="url(#red)" stroke-width="12" stroke-linejoin="round"/>
+
+  <path d="M82 84V168H109C122 168 128 162 128 150V138C128 131 125 126 120 123C125 120 128 115 128 108V101C128 90 121 84 108 84H82ZM97 97H108C112 97 114 99 114 103V110C114 115 111 117 105 117H97V97ZM97 130H106C112 130 114 133 114 138V148C114 153 111 155 105 155H97V130Z" fill="#F7F7F8"/>
+  <path d="M150 84H174V97H164V156C164 165 158 171 149 171H141V158H146C148 158 150 156 150 153V84Z" fill="white"/>
+</svg>
