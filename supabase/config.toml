@@ -1,0 +1,55 @@
+project_id = "eouwdgnbpovlihbrawmm"
+
+[functions.billing-create-checkout]
+verify_jwt = false
+
+[functions.asaas-saldo]
+verify_jwt = false
+
+[functions.confirmar-presenca-aula]
+verify_jwt = false
+
+[functions.create-user]
+verify_jwt = false
+
+[functions.delete-ct-users]
+verify_jwt = false
+
+[functions.disparar-chamada-aula]
+verify_jwt = false
+
+[functions.geocodificar-endereco]
+verify_jwt = false
+
+[functions.gerar-cobrancas]
+verify_jwt = false
+
+[functions.login-by-username]
+verify_jwt = false
+
+[functions.reprocess-billing-subscription]
+verify_jwt = false
+
+[functions.send-message]
+verify_jwt = false
+
+[functions.test-asaas]
+verify_jwt = false
+
+[functions.secure-config]
+verify_jwt = false
+
+[functions.update-user]
+verify_jwt = false
+
+[functions.webhook-asaas]
+verify_jwt = false
+
+[functions.ct-private-asset-url]
+verify_jwt = false
+
+[functions.submit-payment-receipt]
+verify_jwt = false
+
+[functions.review-payment-receipt]
+verify_jwt = false

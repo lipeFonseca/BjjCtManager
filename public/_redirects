@@ -1,0 +1,5 @@
+/login   /index.html   200
+/planos   /index.html   200
+/dashboard/*   /index.html   200
+/admin/*   /index.html   200
+/*   /index.html   200

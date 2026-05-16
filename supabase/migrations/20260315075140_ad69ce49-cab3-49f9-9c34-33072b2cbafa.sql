@@ -1,0 +1,1 @@
+ALTER TABLE public.config_pagamento DROP CONSTRAINT IF EXISTS config_pagamento_ct_id_config_key_unique;
